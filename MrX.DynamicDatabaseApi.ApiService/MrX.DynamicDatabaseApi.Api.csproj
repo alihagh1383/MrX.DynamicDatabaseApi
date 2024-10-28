@@ -1,0 +1,24 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Aspire.Microsoft.EntityFrameworkCore.SqlServer" Version="9.0.0-rc.1.24511.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\MrX.DynamicDatabaseApi.CallBack\MrX.DynamicDatabaseApi.CallBack.csproj" />
+    <ProjectReference Include="..\MrX.DynamicDatabaseApi.ServiceDefaults\MrX.DynamicDatabaseApi.ServiceDefaults.csproj" />
+    <ProjectReference Include="..\MrX.DynamicDatabaseApi.Worker\MrX.DynamicDatabaseApi.Worker.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Endpoint\" />
+    <Folder Include="Handler\" />
+  </ItemGroup>
+
+</Project>
