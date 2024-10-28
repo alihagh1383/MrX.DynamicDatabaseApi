@@ -1,0 +1,33 @@
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.12.35410.144 d17.12
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MrX.DynamicDatabaseApi.AppHost", "MrX.DynamicDatabaseApi.AppHost\MrX.DynamicDatabaseApi.AppHost.csproj", "{8E335F89-D5BF-4965-B711-903C3D741B18}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MrX.DynamicDatabaseApi.ServiceDefaults", "MrX.DynamicDatabaseApi.ServiceDefaults\MrX.DynamicDatabaseApi.ServiceDefaults.csproj", "{E8DDA297-A3D0-4422-8E4C-B7ACD1421266}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MrX.DynamicDatabaseApi.ApiService", "MrX.DynamicDatabaseApi.ApiService\MrX.DynamicDatabaseApi.ApiService.csproj", "{4E5DD7C8-70FB-4F10-B3EA-89D539F42CE3}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{8E335F89-D5BF-4965-B711-903C3D741B18}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8E335F89-D5BF-4965-B711-903C3D741B18}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8E335F89-D5BF-4965-B711-903C3D741B18}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8E335F89-D5BF-4965-B711-903C3D741B18}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E8DDA297-A3D0-4422-8E4C-B7ACD1421266}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E8DDA297-A3D0-4422-8E4C-B7ACD1421266}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E8DDA297-A3D0-4422-8E4C-B7ACD1421266}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E8DDA297-A3D0-4422-8E4C-B7ACD1421266}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4E5DD7C8-70FB-4F10-B3EA-89D539F42CE3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4E5DD7C8-70FB-4F10-B3EA-89D539F42CE3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4E5DD7C8-70FB-4F10-B3EA-89D539F42CE3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4E5DD7C8-70FB-4F10-B3EA-89D539F42CE3}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
