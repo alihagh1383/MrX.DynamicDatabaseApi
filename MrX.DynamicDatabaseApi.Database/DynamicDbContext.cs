@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using System.Globalization;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Identity.Client;
 using MrX.Web.Logger;
 using Newtonsoft.Json;
@@ -33,9 +34,8 @@ public class DynamicDbContext : DbContext
     {
         base.OnModelCreating(modelBuilder);
         modelBuilder.Entity<Table.Dynamic.DynamicTable>().ToTable(_tableName);
-        modelBuilder.Entity<Table.Dynamic.DynamicTable>().Property(p => p.DynamicColumns).HasConversion(
-            v => JsonConvert.SerializeObject(v),
-            v => JsonConvert.DeserializeObject<Dictionary<string, string>>(v) ?? new Dictionary<string, string>());
+        modelBuilder.Entity<Table.Dynamic.DynamicTable>().Property(p => p.DynamicColumns).HasConversion(v => JsonConvert.SerializeObject(v), v => JsonConvert.DeserializeObject<Dictionary<string, string>>(v) ?? new Dictionary<string, string>());
+        modelBuilder.Entity<Table.Dynamic.DynamicTable>().Property(p => p.CreatedDate).HasConversion(p=> p.ToString(), v => DateTime.Parse(v));
         modelBuilder.Entity<Table.Dynamic.DynamicTable>().Property(p => p.Id).ValueGeneratedOnAdd();
         modelBuilder.Entity<Table.Dynamic.DynamicTable>().HasQueryFilter(p => p.IsDeleted == false);
     }
