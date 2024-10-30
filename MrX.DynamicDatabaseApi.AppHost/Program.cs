@@ -1,5 +1,3 @@
 var builder = DistributedApplication.CreateBuilder(args);
-
-var apiService = builder.AddProject<Projects.MrX_DynamicDatabaseApi_ApiService>("apiservice");
-
+builder.AddProject<Projects.MrX_DynamicDatabaseApi_Api>("API");
 builder.Build().Run();

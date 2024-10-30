@@ -1,12 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Microsoft.EntityFrameworkCore;
 
 namespace MrX.DynamicDatabaseApi.Database
 {
-    public class InMemoryDBContext
+    public class InMemoryDBContext : DbContext
     {
+        public DbSet<Table.InMemory.LoginsTables> Logins { get; set; }
     }
 }
