@@ -2,5 +2,8 @@
 <project version="4">
   <component name="VcsDirectoryMappings">
     <mapping directory="" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/../MrX.Extensions" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/../MrX.Security" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/../MrX.Web" vcs="Git" />
   </component>
 </project>

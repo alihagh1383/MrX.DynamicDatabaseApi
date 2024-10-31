@@ -16,6 +16,7 @@
     <ItemGroup>
         <PackageReference Include="Aspire.Microsoft.EntityFrameworkCore.SqlServer" Version="9.0.0-rc.1.24511.1"/>
         <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+        <PackageReference Include="Aspire.StackExchange.Redis.OutputCaching" Version="8.2.0" />
 
         <ProjectReference Include="..\MrX.DynamicDatabaseApi.CallBack\MrX.DynamicDatabaseApi.CallBack.csproj"/>
         <ProjectReference Include="..\MrX.DynamicDatabaseApi.ServiceDefaults\MrX.DynamicDatabaseApi.ServiceDefaults.csproj"/>
@@ -24,7 +25,6 @@
 
     <ItemGroup>
         <Folder Include="Endpoint\"/>
-        <Folder Include="Handler\"/>
     </ItemGroup>
 
 </Project>

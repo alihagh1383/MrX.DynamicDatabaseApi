@@ -12,10 +12,10 @@
   <ItemGroup>
     <ProjectReference Include="..\MrX.DynamicDatabaseApi.ApiService\MrX.DynamicDatabaseApi.Api.csproj" />
   </ItemGroup>
-
   <ItemGroup>
-    <PackageReference Include="Aspire.Hosting.AppHost" Version="8.2.2" />
-    <PackageReference Include="Aspire.Hosting.SqlServer" Version="8.2.2" />
+    <PackageReference Include="Aspire.Hosting.AppHost" Version="8.2.0" />
+    <PackageReference Include="Aspire.Hosting.Redis" Version="8.2.0" />
+    <PackageReference Include="Aspire.Hosting.SqlServer" Version="8.2.0" />
+    <PackageReference Include="Nall.Aspire.Hosting.DependsOn" Version="1.0.1" />
   </ItemGroup>
-
 </Project>

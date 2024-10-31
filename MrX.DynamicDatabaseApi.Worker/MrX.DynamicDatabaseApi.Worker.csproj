@@ -6,4 +6,8 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\MrX.DynamicDatabaseApi.Database\MrX.DynamicDatabaseApi.Database.csproj" />
+  </ItemGroup>
+
 </Project>
