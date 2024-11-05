@@ -41,7 +41,7 @@ namespace MrX.DynamicDatabaseApi.Worker
         }
 
         public bool AddRnge(IEnumerable<TablesTable> User)
-        => Do(() => { foreach (var item in User) { DB.TablesTable.Add(item); Static.Ddbcs.TryAdd(item.Name, new DBCDynamicTable(item.Name, DB.Database.GetConnectionString()!)); DB.SaveChanges(); } });
+        => Do(() => { foreach (var item in User) { DB.TablesTable.Add(item); Static.Ddbcs.TryAdd(item.Name, new Database.DynamicDbContext(item.Name, DB.Database.GetConnectionString()!)); DB.SaveChanges(); } });
 
         public bool Exist(Expression<Func<TablesTable, bool>> F)
         => DB.TablesTable.Any(F);

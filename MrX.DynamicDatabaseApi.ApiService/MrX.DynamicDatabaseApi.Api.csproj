@@ -9,22 +9,22 @@
     <ItemGroup>
         <!--<PackageReference Include="MrX.Web"/>-->
         <!--OR-->
-        <ProjectReference Include="..\..\MrX.Web\MrX.Web.csproj"/>
+        <ProjectReference Include="..\..\MrX.Web\MrX.Web.csproj" />
 
     </ItemGroup>
 
     <ItemGroup>
-        <PackageReference Include="Aspire.Microsoft.EntityFrameworkCore.SqlServer" Version="9.0.0-rc.1.24511.1"/>
+        <PackageReference Include="Aspire.Microsoft.EntityFrameworkCore.SqlServer" Version="9.0.0-rc.1.24511.1" />
+        <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="9.0.0-rc.2.24474.1">
+          <PrivateAssets>all</PrivateAssets>
+          <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+        </PackageReference>
         <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
         <PackageReference Include="Aspire.StackExchange.Redis.OutputCaching" Version="8.2.0" />
 
-        <ProjectReference Include="..\MrX.DynamicDatabaseApi.CallBack\MrX.DynamicDatabaseApi.CallBack.csproj"/>
-        <ProjectReference Include="..\MrX.DynamicDatabaseApi.ServiceDefaults\MrX.DynamicDatabaseApi.ServiceDefaults.csproj"/>
-        <ProjectReference Include="..\MrX.DynamicDatabaseApi.Worker\MrX.DynamicDatabaseApi.Worker.csproj"/>
-    </ItemGroup>
-
-    <ItemGroup>
-        <Folder Include="Endpoint\"/>
+        <ProjectReference Include="..\MrX.DynamicDatabaseApi.CallBack\MrX.DynamicDatabaseApi.CallBack.csproj" />
+        <ProjectReference Include="..\MrX.DynamicDatabaseApi.ServiceDefaults\MrX.DynamicDatabaseApi.ServiceDefaults.csproj" />
+        <ProjectReference Include="..\MrX.DynamicDatabaseApi.Worker\MrX.DynamicDatabaseApi.Worker.csproj" />
     </ItemGroup>
 
 </Project>

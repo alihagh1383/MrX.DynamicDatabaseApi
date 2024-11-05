@@ -11,13 +11,12 @@ namespace MrX.DynamicDatabaseApi.Database
     {
         public SQLDBContext(DbContextOptions<SQLDBContext> options) : base(options)
         {
-            Database.Migrate();
+        //  Database.Migrate();
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
-
             var stringobjectDictionaryKeyValueComparer = new ValueComparer<Dictionary<string, object>>(
                 (c1, c2) => c1.SequenceEqual(c2),
                 c => c.Aggregate(0, (a, v) => HashCode.Combine(a, v.GetHashCode())),
@@ -39,7 +38,6 @@ namespace MrX.DynamicDatabaseApi.Database
             modelBuilder.Entity<Table.SQL.RolesTable>().HasQueryFilter(p => p.IsDeleted == false);
             modelBuilder.Entity<Table.SQL.FieldsTable>().HasQueryFilter(p => p.IsDeleted == false);
             modelBuilder.Entity<Table.InMemory.LoginsTables>().HasQueryFilter(p => p.IsDeleted == false);
-
 
             modelBuilder.Entity<Table.SQL.TablesTable>().HasIndex(p => p.Name).IsUnique();
 
