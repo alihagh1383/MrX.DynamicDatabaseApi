@@ -14,13 +14,13 @@
     </ItemGroup>
 
     <ItemGroup>
-        <PackageReference Include="Aspire.Microsoft.EntityFrameworkCore.SqlServer" Version="9.0.0-rc.1.24511.1" />
-        <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="9.0.0-rc.2.24474.1">
+        <PackageReference Include="Aspire.Pomelo.EntityFrameworkCore.MySql" Version="8.2.2" />
+        <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="8.0.10">
           <PrivateAssets>all</PrivateAssets>
           <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
         </PackageReference>
         <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
-        <PackageReference Include="Aspire.StackExchange.Redis.OutputCaching" Version="8.2.0" />
+        <PackageReference Include="Aspire.StackExchange.Redis.OutputCaching" Version="8.2.2" />
 
         <ProjectReference Include="..\MrX.DynamicDatabaseApi.CallBack\MrX.DynamicDatabaseApi.CallBack.csproj" />
         <ProjectReference Include="..\MrX.DynamicDatabaseApi.ServiceDefaults\MrX.DynamicDatabaseApi.ServiceDefaults.csproj" />

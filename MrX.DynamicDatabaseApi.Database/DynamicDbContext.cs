@@ -1,6 +1,5 @@
 ﻿using System.Globalization;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Identity.Client;
 using MrX.Web.Logger;
 using Newtonsoft.Json;
 
@@ -43,7 +42,7 @@ public class DynamicDbContext : DbContext
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
         base.OnConfiguring(optionsBuilder);
-        optionsBuilder.UseSqlServer(connectionString: this._connectionString);
+        optionsBuilder.UseMySql(ServerVersion.AutoDetect( this._connectionString));
     }
 
     public override int SaveChanges()
