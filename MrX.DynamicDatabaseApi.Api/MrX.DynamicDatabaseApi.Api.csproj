@@ -10,7 +10,7 @@
         <!--<PackageReference Include="MrX.Web"/>-->
         <!--OR-->
         <ProjectReference Include="..\..\MrX.Web\MrX.Web.csproj" />
-    <Folder Include="Log" />
+        <Folder Include="Log" />
     </ItemGroup>
 
     <ItemGroup>
