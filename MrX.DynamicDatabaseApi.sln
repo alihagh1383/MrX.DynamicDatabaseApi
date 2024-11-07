@@ -2,7 +2,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.12.35410.144
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MrX.DynamicDatabaseApi.Api", "MrX.DynamicDatabaseApi.ApiService\MrX.DynamicDatabaseApi.Api.csproj", "{4E5DD7C8-70FB-4F10-B3EA-89D539F42CE3}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MrX.DynamicDatabaseApi.Api", "MrX.DynamicDatabaseApi.Api\MrX.DynamicDatabaseApi.Api.csproj", "{4E5DD7C8-70FB-4F10-B3EA-89D539F42CE3}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Base", "Base", "{27B2F369-D0DD-4E55-AD47-2CE380826070}"
 EndProject

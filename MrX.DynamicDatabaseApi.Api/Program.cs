@@ -10,6 +10,8 @@ using MrX.DynamicDatabaseApi.Api.SetupFunction;
 using Microsoft.EntityFrameworkCore.Diagnostics;
 using MrX.DynamicDatabaseApi.CallBack;
 
+if(!Directory.Exists("Log"))Directory.CreateDirectory("Log");
+
 /*
  Table + Name  => TableRole
  _     + Name  => Deleted

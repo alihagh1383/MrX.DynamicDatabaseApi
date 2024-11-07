@@ -8,6 +8,7 @@
   "outputFormat": "compose",
   "privateRegistryEmail": "aspir8@aka.ms",
   "includeDashboard": true,
+  "useCustomNamespace": false,
   "secrets": {
     "salt": "Q\u002B0DUzcSXB4VJ8rX",
     "hash": "xSMEhn/hb\u002B8SD8MgJ5scpZmQTeQyAGUzDRRlGZmcrOw=",
