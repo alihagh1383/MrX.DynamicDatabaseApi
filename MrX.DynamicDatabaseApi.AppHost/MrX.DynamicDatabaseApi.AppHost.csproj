@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <OutputType>Exe</OutputType>
@@ -6,16 +6,16 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
     <IsAspireHost>true</IsAspireHost>
-    <UserSecretsId>33a8fcd6-1f33-4a61-9238-751cc422ee41</UserSecretsId>
+    <UserSecretsId>8925284e-ac26-413c-b3d0-63c7579fa8f1</UserSecretsId>
   </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Aspire.Hosting.AppHost" Version="8.2.2" />
+    <PackageReference Include="Aspire.Hosting.MySql" Version="8.2.2" />
+  </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\MrX.DynamicDatabaseApi.ApiService\MrX.DynamicDatabaseApi.Api.csproj" />
   </ItemGroup>
-  <ItemGroup>
-    <PackageReference Include="Aspire.Hosting.AppHost" Version="8.2.2" />
-    <PackageReference Include="Aspire.Hosting.MySql" Version="8.2.2" />
-    <PackageReference Include="Aspire.Hosting.Redis" Version="8.2.2" />
-    <PackageReference Include="Nall.Aspire.Hosting.DependsOn" Version="1.0.1" />
-  </ItemGroup>
+
 </Project>

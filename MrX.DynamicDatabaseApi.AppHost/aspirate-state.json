@@ -1,0 +1,26 @@
+{
+  "projectPath": ".",
+  "outputPath": "aspirate-output",
+  "containerImageTags": [
+    "latest"
+  ],
+  "containerBuilder": "docker",
+  "outputFormat": "compose",
+  "privateRegistryEmail": "aspir8@aka.ms",
+  "includeDashboard": true,
+  "secrets": {
+    "salt": "Q\u002B0DUzcSXB4VJ8rX",
+    "hash": "xSMEhn/hb\u002B8SD8MgJ5scpZmQTeQyAGUzDRRlGZmcrOw=",
+    "secrets": {
+      "MySQL-password": {
+        "value": "Q\u002B0DUzcSXB4VJ8rXKk\u002BTKRK69iFacoQ8dwmpid2gB7GBF21F/vM6Zomp14PeBdzdBK4="
+      },
+      "MySQL": {},
+      "DB": {},
+      "mrx-dynamicdatabaseapi-api": {
+        "ConnectionStrings__DB": "Q\u002B0DUzcSXB4VJ8rXhyZdUE0D3g6EajFYMAJqib6IVLSSPB5BwPUhWNybjsP/W42jX\u002BEb9OPbKZ0Vyn6qRfn1NL/c6IThoeJIxeLursDsIx\u002BgptkAPWtP4gqvtRKvgn1C8gD7SO0jkhyedg0="
+      }
+    }
+  },
+  "processAllComponents": true
+}

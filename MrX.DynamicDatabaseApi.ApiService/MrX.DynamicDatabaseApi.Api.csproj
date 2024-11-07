@@ -23,6 +23,7 @@
         <PackageReference Include="Aspire.StackExchange.Redis.OutputCaching" Version="8.2.2" />
 
         <ProjectReference Include="..\MrX.DynamicDatabaseApi.CallBack\MrX.DynamicDatabaseApi.CallBack.csproj" />
+
         <ProjectReference Include="..\MrX.DynamicDatabaseApi.ServiceDefaults\MrX.DynamicDatabaseApi.ServiceDefaults.csproj" />
         <ProjectReference Include="..\MrX.DynamicDatabaseApi.Worker\MrX.DynamicDatabaseApi.Worker.csproj" />
     </ItemGroup>

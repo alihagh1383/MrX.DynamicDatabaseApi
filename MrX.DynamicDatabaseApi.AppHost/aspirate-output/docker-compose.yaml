@@ -1,0 +1,39 @@
+services:
+  aspire-dashboard:
+    container_name: "aspire-dashboard"
+    image: "mcr.microsoft.com/dotnet/aspire-dashboard:8.0"
+    environment:
+      DOTNET_DASHBOARD_UNSECURED_ALLOW_ANONYMOUS: "true"
+    ports:
+    - target: 18888
+      published: 18888
+    restart: unless-stopped
+  MySQL:
+    container_name: "MySQL"
+    image: "docker.io/library/mysql:9.1"
+    environment:
+      MYSQL_ROOT_PASSWORD: "0M!svYNIGUJrnb62UcbMky"
+      OTEL_EXPORTER_OTLP_ENDPOINT: "http://aspire-dashboard:18889"
+      OTEL_SERVICE_NAME: "MySQL"
+    ports:
+    - target: 3306
+      published: 3306
+    restart: unless-stopped
+  mrx-dynamicdatabaseapi-api:
+    container_name: "mrx-dynamicdatabaseapi-api"
+    image: "mrx-dynamicdatabaseapi-api:latest"
+    environment:
+      OTEL_DOTNET_EXPERIMENTAL_OTLP_EMIT_EXCEPTION_LOG_ATTRIBUTES: "true"
+      OTEL_DOTNET_EXPERIMENTAL_OTLP_EMIT_EVENT_LOG_ATTRIBUTES: "true"
+      OTEL_DOTNET_EXPERIMENTAL_OTLP_RETRY: "in_memory"
+      ASPNETCORE_FORWARDEDHEADERS_ENABLED: "true"
+      HTTP_PORTS: "8080"
+      ConnectionStrings__DB: "Server=MySQL;Port=3306;User ID=root;Password=0M!svYNIGUJrnb62UcbMky;Database=DB"
+      OTEL_EXPORTER_OTLP_ENDPOINT: "http://aspire-dashboard:18889"
+      OTEL_SERVICE_NAME: "mrx-dynamicdatabaseapi-api"
+    ports:
+    - target: 8080
+      published: 10000
+    - target: 8443
+      published: 10001
+    restart: unless-stopped

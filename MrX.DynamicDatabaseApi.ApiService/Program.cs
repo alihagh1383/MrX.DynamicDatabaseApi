@@ -15,6 +15,7 @@ using MrX.DynamicDatabaseApi.CallBack;
  _     + Name  => Deleted
  */
 var builder = WebApplication.CreateBuilder(args);
+
 builder.AddServiceDefaults();
 builder.Services.AddProblemDetails();
 builder.AddMySqlDbContext<MrX.DynamicDatabaseApi.Database.SQLDBContext>("DB");
@@ -38,11 +39,12 @@ builder.Services.AddScoped<MrX.DynamicDatabaseApi.Worker.DBWUser>();
 builder.Services.ConfigureHttpJsonOptions(c => c.SerializerOptions.Converters.Add(new System.Text.Json.Serialization.JsonStringEnumConverter()));
 
 var app = builder.Build();
+
+app.MapDefaultEndpoints();
 app.UseAuthentication();
 app.UseAuthorization();
 app.UseCors();
 //app.UseHttpsRedirection();
-app.MapDefaultEndpoints();
 app.UseExceptionHandler();
 app.UseMiddleware<MrX.Web.Middleware.SetupLogMiddleware>();
 app.UseMiddleware<MrX.Web.Middleware.LogRequestCMD>();
