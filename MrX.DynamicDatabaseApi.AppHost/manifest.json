@@ -21,6 +21,22 @@
       "type": "value.v0",
       "connectionString": "{MySQL.connectionString};Database=DB"
     },
+    "SQE": {
+      "type": "container.v0",
+      "connectionString": "{SQE.bindings.http.url}",
+      "image": "docker.io/datalust/seq:2024.3",
+      "env": {
+        "ACCEPT_EULA": "Y"
+      },
+      "bindings": {
+        "http": {
+          "scheme": "http",
+          "protocol": "tcp",
+          "transport": "http",
+          "targetPort": 80
+        }
+      }
+    },
     "mrx-dynamicdatabaseapi-api": {
       "type": "project.v0",
       "path": "../MrX.DynamicDatabaseApi.ApiService/MrX.DynamicDatabaseApi.Api.csproj",
@@ -30,7 +46,8 @@
         "OTEL_DOTNET_EXPERIMENTAL_OTLP_RETRY": "in_memory",
         "ASPNETCORE_FORWARDEDHEADERS_ENABLED": "true",
         "HTTP_PORTS": "{mrx-dynamicdatabaseapi-api.bindings.http.targetPort}",
-        "ConnectionStrings__DB": "{DB.connectionString}"
+        "ConnectionStrings__DB": "{DB.connectionString}",
+        "ConnectionStrings__SQE": "{SQE.connectionString}"
       },
       "bindings": {
         "http": {

@@ -15,13 +15,12 @@ using MrX.DynamicDatabaseApi.CallBack;
  _     + Name  => Deleted
  */
 var builder = WebApplication.CreateBuilder(args);
-
+builder.AddSeqEndpoint("SQE");
 builder.AddServiceDefaults();
 builder.Services.AddProblemDetails();
 builder.AddMySqlDbContext<MrX.DynamicDatabaseApi.Database.SQLDBContext>("DB");
 //builder.Services.AddDbContext<MrX.DynamicDatabaseApi.Database.SQLDBContext>(o => { o.UseMySql(ServerVersion.AutoDetect("server=127.0.0.1; Port=30000;uid=root;pwd=ali1383ali@;database=cc"),m=>m.EnableRetryOnFailure()); });
 builder.Services.AddDbContext<MrX.DynamicDatabaseApi.Database.InMemoryDBContext>(o => o.UseInMemoryDatabase("InMemory"));
-builder.Services.AddSingleton<SecurityLogger>();
 builder.Services.AddCors(options => options.AddDefaultPolicy(policyBuilder => { policyBuilder.AllowAnyOrigin(); }));
 
 var rule = new AuthorizationPolicyBuilder().AddRequirements(new MrX.DynamicDatabaseApi.Api.Handler.RuleAuthorizationRequirementInput()).Build();
@@ -37,9 +36,13 @@ builder.Services.AddScoped<MrX.DynamicDatabaseApi.Worker.DBWTabels>();
 builder.Services.AddScoped<MrX.DynamicDatabaseApi.Worker.DBWUser>();
 
 builder.Services.ConfigureHttpJsonOptions(c => c.SerializerOptions.Converters.Add(new System.Text.Json.Serialization.JsonStringEnumConverter()));
+builder.Services.AddSingleton<SecurityLogger>((SP) =>
+{
+    var F = SP.GetService<ILoggerFactory>()!;
+    return new SecurityLogger(F, false, true);
+});
 
 var app = builder.Build();
-
 app.MapDefaultEndpoints();
 app.UseAuthentication();
 app.UseAuthorization();
@@ -50,9 +53,9 @@ app.UseMiddleware<MrX.Web.Middleware.SetupLogMiddleware>();
 app.UseMiddleware<MrX.Web.Middleware.LogRequestCMD>();
 app.UseMiddlewareForPaths<MrX.Web.Middleware.LogResponseBody>("/Login");
 
-app.Map("/", (HttpContext hc) => new Return(Return.Loc.Check, 200, Guid.NewGuid().ToString(), hc.Items.Where(c => !((c.Key.ToString()?.StartsWith("__")??true))).ToDictionary()));
+app.Map("/", (HttpContext hc) => new Return(Return.Loc.Check, 200, Guid.NewGuid().ToString(), hc.Items.Where(c => !((c.Key.ToString()?.StartsWith("__") ?? true))).ToDictionary()));
 app.Map("/login/{UserNameOrEmail}/{Password}", MrX.DynamicDatabaseApi.Api.Endpoint.Authentication.Login);
-var login = app.MapGroup("/{Session}").RequireAuthorization();
+var login = app.MapGroup("/{Session:guid}").RequireAuthorization();
 login.Map("/", (HttpContext hc) => new Return(Return.Loc.Check, 200, (hc.Items["LoginId"] ?? "").ToString() ?? "", hc.Items["user"])).RequireAuthorization(rule);
 
 
