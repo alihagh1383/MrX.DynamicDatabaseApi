@@ -1,27 +1,35 @@
 {
   "projectPath": ".",
+  "inputPath": "aspirate-output",
   "outputPath": "aspirate-output",
+  "allowClearNamespace": true,
   "containerImageTags": [
     "latest"
   ],
+  "imagePullPolicy": "IfNotPresent",
   "containerBuilder": "docker",
+  "kubeContext": "docker-desktop",
   "outputFormat": "compose",
+  "skipFinalKustomizeGeneration": true,
   "privateRegistryEmail": "aspir8@aka.ms",
-  "includeDashboard": true,
+  "includeDashboard": false,
   "useCustomNamespace": false,
   "secrets": {
-    "salt": "Q\u002B0DUzcSXB4VJ8rX",
-    "hash": "xSMEhn/hb\u002B8SD8MgJ5scpZmQTeQyAGUzDRRlGZmcrOw=",
+    "salt": "RDb5wyKwYperiHYJ",
+    "hash": "YDYnyOxAZy\u002BtgN9YojtcknEwjrHrXHBs24LyZPUbhfc=",
     "secrets": {
       "MySQL-password": {
-        "value": "Q\u002B0DUzcSXB4VJ8rXKk\u002BTKRK69iFacoQ8dwmpid2gB7GBF21F/vM6Zomp14PeBdzdBK4="
+        "value": "RDb5wyKwYperiHYJNcGRfDFFUPNINliZmgHNtEoH3QqsX6E9UbOhJt5WMo\u002BXoo/Fk/U="
       },
       "MySQL": {},
       "DB": {},
+      "SQE": {},
       "mrx-dynamicdatabaseapi-api": {
-        "ConnectionStrings__DB": "Q\u002B0DUzcSXB4VJ8rXhyZdUE0D3g6EajFYMAJqib6IVLSSPB5BwPUhWNybjsP/W42jX\u002BEb9OPbKZ0Vyn6qRfn1NL/c6IThoeJIxeLursDsIx\u002BgptkAPWtP4gqvtRKvgn1C8gD7SO0jkhyedg0="
+        "ConnectionStrings__DB": "RDb5wyKwYperiHYJzV1M3LUE5prZd3odgnHBfnAR/h2sTNAyfa6BBNxXCIjbyfmfyIgiUluzVrF40ViECvhavk8L4gpT9pDlQSTPmRLRdRN1qe1mhyjI1du5ANGJR1w1fyeJ2AdEpjoglm0=",
+        "ConnectionStrings__SQE": "RDb5wyKwYperiHYJ3xu7ixnXrM4ZM02m3aUwTUsA\u002BBvzEcIsVbjqcNc="
       }
     }
   },
-  "processAllComponents": true
+  "processAllComponents": true,
+  "isRunning": true
 }

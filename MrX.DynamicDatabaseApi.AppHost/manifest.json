@@ -25,6 +25,13 @@
       "type": "container.v0",
       "connectionString": "{SQE.bindings.http.url}",
       "image": "docker.io/datalust/seq:2024.3",
+      "bindMounts": [
+        {
+          "source": "seqdata",
+          "target": "/data",
+          "readOnly": false
+        }
+      ],
       "env": {
         "ACCEPT_EULA": "Y"
       },
@@ -54,12 +61,7 @@
           "scheme": "http",
           "protocol": "tcp",
           "transport": "http",
-          "external": true
-        },
-        "https": {
-          "scheme": "https",
-          "protocol": "tcp",
-          "transport": "http",
+          "port": 8000,
           "external": true
         }
       }
