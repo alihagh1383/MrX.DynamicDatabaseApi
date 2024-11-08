@@ -14,7 +14,7 @@ namespace MrX.DynamicDatabaseApi.Api.SetupFunction
                 try
                 {
                     var db = services.GetRequiredService<Database.SQLDBContext>();
-                    db.Database.Migrate();
+                   // db.Database.Migrate();
                     var UM = services.GetRequiredService<Worker.DBWUser>();
                     var TM = services.GetRequiredService< Worker.DBWTabels> ();
                     var FM = services.GetRequiredService< Worker.DBWFields> ();

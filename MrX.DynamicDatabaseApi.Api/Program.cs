@@ -11,16 +11,17 @@ using Microsoft.EntityFrameworkCore.Diagnostics;
 using MrX.DynamicDatabaseApi.CallBack;
 
 
+
 /*
  Table + Name  => TableRole
  _     + Name  => Deleted
  */
 var builder = WebApplication.CreateBuilder(args);
-builder.AddSeqEndpoint("SQE");
+builder.AddSeqEndpoint("SEQ");
 builder.AddServiceDefaults();
 builder.Services.AddProblemDetails();
 builder.AddMySqlDbContext<MrX.DynamicDatabaseApi.Database.SQLDBContext>("DB");
-//builder.Services.AddDbContext<MrX.DynamicDatabaseApi.Database.SQLDBContext>(o => { o.UseMySql(ServerVersion.AutoDetect("server=127.0.0.1; Port=30000;uid=root;pwd=ali1383ali@;database=cc"),m=>m.EnableRetryOnFailure()); });
+//builder.Services.AddDbContext<MrX.DynamicDatabaseApi.Database.SQLDBContext>(o => { o.UseMySql(ServerVersion.AutoDetect("server=127.0.0.1; Port=30000;uid=root;pwd=ali1383ali@;database=DB"),m=>m.EnableRetryOnFailure()); });
 builder.Services.AddDbContext<MrX.DynamicDatabaseApi.Database.InMemoryDBContext>(o => o.UseInMemoryDatabase("InMemory"));
 builder.Services.AddCors(options => options.AddDefaultPolicy(policyBuilder => { policyBuilder.AllowAnyOrigin(); }));
 
