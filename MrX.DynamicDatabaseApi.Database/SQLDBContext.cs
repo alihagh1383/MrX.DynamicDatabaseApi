@@ -10,7 +10,7 @@ namespace MrX.DynamicDatabaseApi.Database
     {
         public SQLDBContext(DbContextOptions<SQLDBContext> options) : base(options)
         {
-        //  Database.Migrate();
+        // Database.Migrate();
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)

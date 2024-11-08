@@ -12,7 +12,7 @@ using MrX.DynamicDatabaseApi.Database;
 namespace MrX.DynamicDatabaseApi.Database.Migrations
 {
     [DbContext(typeof(SQLDBContext))]
-    [Migration("20241106083908_m1")]
+    [Migration("20241108150029_m1")]
     partial class m1
     {
         /// <inheritdoc />

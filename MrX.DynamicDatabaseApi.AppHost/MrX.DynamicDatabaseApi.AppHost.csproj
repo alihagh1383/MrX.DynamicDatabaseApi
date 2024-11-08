@@ -1,18 +1,21 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
+  <Sdk Name="Aspire.AppHost.Sdk" Version="9.0.0-rc.1.24511.1" />
+
   <PropertyGroup>
     <OutputType>Exe</OutputType>
     <TargetFramework>net8.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
     <IsAspireHost>true</IsAspireHost>
-    <UserSecretsId>8925284e-ac26-413c-b3d0-63c7579fa8f1</UserSecretsId>
+    <UserSecretsId>6df0b044-a8fa-4f21-9a62-b57438b8c344</UserSecretsId>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Aspire.Hosting.AppHost" Version="8.2.2" />
-    <PackageReference Include="Aspire.Hosting.MySql" Version="8.2.2" />
-    <PackageReference Include="Aspire.Hosting.Seq" Version="8.2.2" />
+    <PackageReference Include="Aspire.Hosting.AppHost" Version="9.0.0-rc.1.24511.1" />
+    <PackageReference Include="Aspire.Hosting.MySql" Version="9.0.0-rc.1.24511.1" />
+    <PackageReference Include="Aspire.Hosting.Seq" Version="9.0.0-rc.1.24511.1" />
+    <PackageReference Include="Aspire.Pomelo.EntityFrameworkCore.MySql" Version="9.0.0-rc.1.24511.1" />
   </ItemGroup>
 
   <ItemGroup>
