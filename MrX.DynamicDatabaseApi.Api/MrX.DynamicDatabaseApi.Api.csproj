@@ -23,8 +23,6 @@
       
       
         <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
-        <PackageReference Include="OpenTelemetry.Exporter.OpenTelemetryProtocol" Version="1.10.0-rc.1" />
-        <PackageReference Include="OpenTelemetry.Extensions.Hosting" Version="1.10.0-rc.1" />
 
         <ProjectReference Include="..\MrX.DynamicDatabaseApi.CallBack\MrX.DynamicDatabaseApi.CallBack.csproj" />
         <ProjectReference Include="..\MrX.DynamicDatabaseApi.ServiceDefaults\MrX.DynamicDatabaseApi.ServiceDefaults.csproj" />
