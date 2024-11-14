@@ -58,7 +58,7 @@ app.UseMiddlewareForPaths<MrX.Web.Middleware.LogResponseBody>("/Login");
 app.Map("/", (HttpContext hc) => new Return(Return.Loc.Check, 200, Guid.NewGuid().ToString(), hc.Items.Where(c => !((c.Key.ToString()?.StartsWith("__") ?? true))).ToDictionary()));
 app.Map("/login/{UserNameOrEmail}/{Password}", MrX.DynamicDatabaseApi.Api.Endpoint.Authentication.Login);
 var login = app.MapGroup("/{Session:guid}").RequireAuthorization();
-login.Map("/", (HttpContext hc) => new Return(Return.Loc.Check, 200, (hc.Items["LoginId"] ?? "").ToString() ?? "", hc.Items["user"])).RequireAuthorization(rule);
+login.Map("/",[Authorize] (HttpContext hc) => new Return(Return.Loc.Check, 200, (hc.Items["LoginId"] ?? "").ToString() ?? "", hc.Items["user"])).RequireAuthorization();
 
 
 
