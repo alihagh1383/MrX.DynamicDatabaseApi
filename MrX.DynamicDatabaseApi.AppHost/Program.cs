@@ -1,8 +1,14 @@
+using Json.More;
+using Json.Patch;
+//Environment.SetEnvironmentVariable("DOTNET_DASHBOARD_OTLP_ENDPOINT_URL", "http://localhost:19218");
+//Environment.SetEnvironmentVariable("DOTNET_RESOURCE_SERVICE_ENDPOINT_URL", "http://localhost:20277");
+//Environment.SetEnvironmentVariable("ASPNETCORE_URLS", "http://localhost:15205");
 var builder = DistributedApplication.CreateBuilder(new DistributedApplicationOptions() { AllowUnsecuredTransport = true });
-var SQL = builder.AddMySql("SQL", port: 8000).PublishAsContainer();
+var SQLPass = builder.AddParameter("PASS", "sqlpasswordwnttyutymi78674js5rhtty", true);
+var SQL = builder.AddMySql("SQL", port: 8000,password: SQLPass).PublishAsContainer();
 var DB = SQL.AddDatabase("DB");
 var SEQ = builder.AddSeq("SEQ", 8080).PublishAsContainer();
-var DDA = builder.AddProject<Projects.MrX_DynamicDatabaseApi_Api>("mrx-dynamicdatabaseapi-api", c => c.ExcludeLaunchProfile = true);
+var DDA = builder.AddProject<Projects.MrX_DynamicDatabaseApi_Api>("mrx-dynamicdatabaseapi-api", /*"""E:\MrX\MrX.DynamicDatabaseApi\MrX.DynamicDatabaseApi.Api\MrX.DynamicDatabaseApi.Api.csproj""",*/ c => c.ExcludeLaunchProfile = true);
 SQL.WithDataVolume("SQL");
 SEQ.WithDataVolume("SEQ");
 DDA.WaitFor(DB);
@@ -28,6 +34,9 @@ for (int i = 0; i < args.Length; i++)
 }
 if (!string.IsNullOrWhiteSpace(urls))
     DDA.WithArgs("--urls", urls.Trim(';'));
+
+
+
 var app = builder.Build();
 app.Run();
 

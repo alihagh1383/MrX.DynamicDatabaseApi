@@ -10,7 +10,7 @@ public class DynamicDbContext : DbContext
     private readonly string _connectionString;
     private readonly string _tableName;
 
-    public DynamicDbContext(string connectionString, string tableName) : base()
+    public DynamicDbContext( string tableName, string connectionString) : base()
     {
         this._connectionString = connectionString;
         this._tableName = tableName;
@@ -42,7 +42,7 @@ public class DynamicDbContext : DbContext
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
         base.OnConfiguring(optionsBuilder);
-        optionsBuilder.UseMySql(ServerVersion.AutoDetect( this._connectionString));
+        optionsBuilder.UseMySql(ServerVersion.AutoDetect(this._connectionString));
     }
 
     public override int SaveChanges()

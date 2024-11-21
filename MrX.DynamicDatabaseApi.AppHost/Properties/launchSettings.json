@@ -3,7 +3,7 @@
     "http": {
       "commandName": "Project",
       "commandLineArgs": "--port 80",
-      "launchBrowser": false,
+      "launchBrowser": true,
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development",
         "DOTNET_ENVIRONMENT": "Development",

@@ -15,10 +15,11 @@ namespace MrX.DynamicDatabaseApi.Api.SetupFunction
                 {
                     var db = services.GetRequiredService<Database.SQLDBContext>();
                     db.Database.Migrate();
+                    Worker.Static.ConStr = db.Database.GetConnectionString()!;
                     var UM = services.GetRequiredService<Worker.DBWUser>();
-                    var TM = services.GetRequiredService< Worker.DBWTabels> ();
-                    var FM = services.GetRequiredService< Worker.DBWFields> ();
-                    var RM = services.GetRequiredService< Worker.DBWRoles> ();
+                    var TM = services.GetRequiredService<Worker.DBWTabels>();
+                    var FM = services.GetRequiredService<Worker.DBWFields>();
+                    var RM = services.GetRequiredService<Worker.DBWRoles>();
                     var Paths = Static.RouteRule.Select(p => p.Key).ToList();
                     var Tabels = TM.GetAll();
                     var Filds = FM.GetAll();
@@ -39,9 +40,8 @@ namespace MrX.DynamicDatabaseApi.Api.SetupFunction
                     R.TabelsReadRole.AddRange(Tabels);
                     UM.Update(U!);
                     RM.Update(R!);
-                    var Memory = services.GetRequiredService< Worker.DBWLogins> ();
+                    var Memory = services.GetRequiredService<Worker.DBWLogins>();
                     Memory.sync();
-                   Worker.Static.ConStr = db.Database.GetConnectionString()!;
                 }
                 catch (Exception ex)
                 {
