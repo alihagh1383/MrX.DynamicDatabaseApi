@@ -1,4 +1,6 @@
-﻿namespace MrX.DynamicDatabaseApi.Database.Table.SQL;
+﻿using MrX.Security;
+
+namespace MrX.DynamicDatabaseApi.Database.Table.SQL;
 
 public class UsersTable : BaseTable
 {
@@ -12,7 +14,16 @@ public class UsersTable : BaseTable
     public Dictionary<string, object> Data { get; set; } = [];
     public UsersTable? Parent { get; set; }
     public List<UsersTable> Childs { get; set; } = [];
-    public bool CheckPassword(string password) => MrX.Security.PasswordHash.Verify(password, Password);
-    public bool CheckIsThisUser(string usernameOrEmail, string password) => ((UserName.Equals(usernameOrEmail, StringComparison.CurrentCultureIgnoreCase)) || (EmailAddress.Equals(usernameOrEmail, StringComparison.CurrentCultureIgnoreCase))) && CheckPassword(password);
 
+    public bool CheckPassword(string password)
+    {
+        return PasswordHash.Verify(password, Password);
+    }
+
+    public bool CheckIsThisUser(string usernameOrEmail, string password)
+    {
+        return (UserName.Equals(usernameOrEmail, StringComparison.CurrentCultureIgnoreCase) ||
+                EmailAddress.Equals(usernameOrEmail, StringComparison.CurrentCultureIgnoreCase)) &&
+               CheckPassword(password);
+    }
 }

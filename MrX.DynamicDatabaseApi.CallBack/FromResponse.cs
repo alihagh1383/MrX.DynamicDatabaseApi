@@ -1,36 +1,28 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿namespace MrX.DynamicDatabaseApi.CallBack;
 
-namespace MrX.DynamicDatabaseApi.CallBack
+public static class FromResponse
 {
-    public static class FromResponse
+    public enum Status
     {
-        public static void Pars(Return @return, out bool Success, out string Message, out object? data, out Status status)
-        {
-            status = Status.Nothing;
-            if (@return == null)
-                throw new ArgumentNullException();
-            Message = (@return.Message);
-            data = @return.Data;
-            if ((@return.StatusCode == 200))
-            {
-                Success = true;
-                status = Status.Sucsses;
-                return;
-            }
-            else
-            {
-                Success = false;
+        Nothing,
+        Sucsses
+    }
 
-            }
-        }
-        public enum Status
+    public static void Pars(Return @return, out bool Success, out string Message, out object? data, out Status status)
+    {
+        status = Status.Nothing;
+        if (@return == null)
+            throw new ArgumentNullException();
+        Message = @return.Message;
+        data = @return.Data;
+        if (@return.StatusCode == 200)
         {
-            Nothing,
-            Sucsses
+            Success = true;
+            status = Status.Sucsses;
+        }
+        else
+        {
+            Success = false;
         }
     }
 }

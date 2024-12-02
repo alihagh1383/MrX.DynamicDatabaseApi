@@ -1,5 +1,5 @@
-﻿using System.Globalization;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
+using MrX.DynamicDatabaseApi.Database.Table.Dynamic;
 using MrX.Web.Logger;
 using Newtonsoft.Json;
 
@@ -10,10 +10,10 @@ public class DynamicDbContext : DbContext
     private readonly string _connectionString;
     private readonly string _tableName;
 
-    public DynamicDbContext( string tableName, string connectionString) : base()
+    public DynamicDbContext(string tableName, string connectionString)
     {
-        this._connectionString = connectionString;
-        this._tableName = tableName;
+        _connectionString = connectionString;
+        _tableName = tableName;
         Database.ExecuteSqlRaw($"""
                                 IF OBJECT_ID(N'[{tableName}]') IS NULL
                                 BEGIN
@@ -32,28 +32,32 @@ public class DynamicDbContext : DbContext
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         base.OnModelCreating(modelBuilder);
-        modelBuilder.Entity<Table.Dynamic.DynamicTable>().ToTable(_tableName);
-        modelBuilder.Entity<Table.Dynamic.DynamicTable>().Property(p => p.DynamicColumns).HasConversion(v => JsonConvert.SerializeObject(v), v => JsonConvert.DeserializeObject<Dictionary<string, string>>(v) ?? new Dictionary<string, string>());
-        modelBuilder.Entity<Table.Dynamic.DynamicTable>().Property(p => p.CreatedDate).HasConversion(p=> p.ToString(), v => DateTime.Parse(v));
-        modelBuilder.Entity<Table.Dynamic.DynamicTable>().Property(p => p.Id).ValueGeneratedOnAdd();
-        modelBuilder.Entity<Table.Dynamic.DynamicTable>().HasQueryFilter(p => p.IsDeleted == false);
+        modelBuilder.Entity<DynamicTable>().ToTable(_tableName);
+        modelBuilder.Entity<DynamicTable>().Property(p => p.DynamicColumns).HasConversion(
+            v => JsonConvert.SerializeObject(v),
+            v => JsonConvert.DeserializeObject<Dictionary<string, string>>(v) ?? new Dictionary<string, string>());
+        modelBuilder.Entity<DynamicTable>().Property(p => p.CreatedDate)
+            .HasConversion(p => p.ToString(), v => DateTime.Parse(v));
+        modelBuilder.Entity<DynamicTable>().Property(p => p.Id).ValueGeneratedOnAdd();
+        modelBuilder.Entity<DynamicTable>().HasQueryFilter(p => p.IsDeleted == false);
     }
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
         base.OnConfiguring(optionsBuilder);
-        optionsBuilder.UseMySql(ServerVersion.AutoDetect(this._connectionString));
+        optionsBuilder.UseMySql(ServerVersion.AutoDetect(_connectionString));
     }
 
     public override int SaveChanges()
     {
         ChangeTracker.DetectChanges();
-        foreach (var item in ChangeTracker.Entries<Table.Dynamic.DynamicTable>()
+        foreach (var item in ChangeTracker.Entries<DynamicTable>()
                      .Where(e => e.State == EntityState.Modified))
         {
-            _ = new DbUpdateLogger(this._tableName, item.Entity.Id.ToString(), item.OriginalValues);
+            _ = new DbUpdateLogger(_tableName, item.Entity.Id.ToString(), item.OriginalValues);
             item.Property(p => p.LastUpdate).CurrentValue = Guid.NewGuid();
         }
+
         return base.SaveChanges();
     }
 }

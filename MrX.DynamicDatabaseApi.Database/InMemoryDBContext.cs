@@ -1,13 +1,13 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using MrX.DynamicDatabaseApi.Database.Table.InMemory;
 
-namespace MrX.DynamicDatabaseApi.Database
+namespace MrX.DynamicDatabaseApi.Database;
+
+public class InMemoryDBContext : DbContext
 {
-    public class InMemoryDBContext : DbContext
+    public InMemoryDBContext(DbContextOptions<InMemoryDBContext> options) : base(options)
     {
-        public InMemoryDBContext(DbContextOptions<InMemoryDBContext> options) : base(options) 
-        {
-            
-        }
-        public DbSet<Table.InMemory.LoginsTables> Logins { get; set; }
     }
+
+    public DbSet<LoginsTables> Logins { get; set; }
 }

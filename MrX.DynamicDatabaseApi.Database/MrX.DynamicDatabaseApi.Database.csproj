@@ -1,22 +1,22 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
-  <PropertyGroup>
-    <TargetFramework>net9.0</TargetFramework>
-    <ImplicitUsings>enable</ImplicitUsings>
-    <Nullable>enable</Nullable>
-  </PropertyGroup>
+    <PropertyGroup>
+        <TargetFramework>net9.0</TargetFramework>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+    </PropertyGroup>
 
-  <ItemGroup>
-    <PackageReference Include="Aspire.Pomelo.EntityFrameworkCore.MySql" Version="9.0.0" />
+    <ItemGroup>
+        <PackageReference Include="Aspire.Pomelo.EntityFrameworkCore.MySql" Version="9.0.0"/>
 
-    <PackageReference Include="Microsoft.EntityFrameworkCore.InMemory" Version="8.0.11" />
-    <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
-  
-  </ItemGroup>
+        <PackageReference Include="Microsoft.EntityFrameworkCore.InMemory" Version="8.0.11"/>
+        <PackageReference Include="Newtonsoft.Json" Version="13.0.3"/>
 
-  <ItemGroup>
-    <ProjectReference Include="..\..\MrX.Security\MrX.Security.csproj" />
-    <ProjectReference Include="..\..\MrX.Web\MrX.Web.csproj" />
-  </ItemGroup>
+    </ItemGroup>
+
+    <ItemGroup>
+        <ProjectReference Include="..\..\MrX.Security\MrX.Security.csproj"/>
+        <ProjectReference Include="..\..\MrX.Web\MrX.Web.csproj"/>
+    </ItemGroup>
 
 </Project>

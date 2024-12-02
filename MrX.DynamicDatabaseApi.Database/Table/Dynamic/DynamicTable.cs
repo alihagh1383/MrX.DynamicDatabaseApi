@@ -2,5 +2,5 @@
 
 public class DynamicTable : BaseTable
 {
-   public Dictionary<string,string> DynamicColumns { get; set; } = new();
+    public Dictionary<string, string> DynamicColumns { get; set; } = new();
 }

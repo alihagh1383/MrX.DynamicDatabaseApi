@@ -10,5 +10,4 @@ public class TablesTable : BaseTable
     public List<RolesTable> DeleteRoles { get; set; } = [];
     public List<RolesTable> UpdateRoles { get; set; } = [];
     public List<RolesTable> ReadRoles { get; set; } = [];
-
 }

@@ -1,8 +1,9 @@
-﻿namespace MrX.DynamicDatabaseApi.Worker { 
+﻿using MrX.DynamicDatabaseApi.Database;
 
-public static partial class Static
+namespace MrX.DynamicDatabaseApi.Worker;
+
+public static class Static
 {
-    public static readonly Dictionary<string, MrX.DynamicDatabaseApi.Database.DynamicDbContext> Ddbcs = new();
+    public static readonly Dictionary<string, DynamicDbContext> Ddbcs = new();
     public static string? ConStr { get; set; }
-
-}}
+}

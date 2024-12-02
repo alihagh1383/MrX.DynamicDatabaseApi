@@ -1,55 +1,88 @@
-﻿using MrX.DynamicDatabaseApi.Database.Table.SQL;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Linq.Expressions;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Linq.Expressions;
+using MrX.DynamicDatabaseApi.Database;
+using MrX.DynamicDatabaseApi.Database.Table.SQL;
 
-namespace MrX.DynamicDatabaseApi.Worker
+namespace MrX.DynamicDatabaseApi.Worker;
+
+public class DBWRoles
 {
-    public class DBWRoles
+    public SQLDBContext DB;
+
+    public DBWRoles(SQLDBContext context)
     {
-        public Database.SQLDBContext DB;
-        public DBWRoles(Database.SQLDBContext context)
+        DB = context;
+    }
+
+    public bool Add(RolesTable User)
+    {
+        return Do(() =>
         {
-            DB = context;
+            DB.RolesTable.Add(User);
+            DB.SaveChanges();
+        });
+    }
+
+    public bool AddRnge(IEnumerable<RolesTable> User)
+    {
+        return Do(() =>
+        {
+            foreach (var item in User)
+            {
+                DB.RolesTable.Add(item);
+                DB.SaveChanges();
+            }
+        });
+    }
+
+    public bool Exist(Expression<Func<RolesTable, bool>> F)
+    {
+        return DB.RolesTable.Any(F);
+    }
+
+    public RolesTable? First(Expression<Func<RolesTable, bool>> F)
+    {
+        return DB.RolesTable.First(F);
+    }
+
+    public RolesTable? Find(params object?[]? Key)
+    {
+        return DB.RolesTable.Find(Key);
+    }
+
+    public IEnumerable<RolesTable> GetAll()
+    {
+        return DB.RolesTable.AsEnumerable();
+    }
+
+    public bool Remove(RolesTable User)
+    {
+        return Do(() =>
+        {
+            User.IsDeleted = true;
+            DB.RolesTable.Update(User);
+            DB.SaveChanges();
+        });
+    }
+
+    public bool Update(RolesTable User)
+    {
+        return Do(() =>
+        {
+            DB.RolesTable.Update(User);
+            DB.SaveChanges();
+        });
+    }
+
+    private bool Do(Action A)
+    {
+        try
+        {
+            A.Invoke();
+            return true;
         }
-        public bool Add(RolesTable User)
-    => Do(() => { DB.RolesTable.Add(User); DB.SaveChanges(); });
-
-        public bool AddRnge(IEnumerable<RolesTable> User)
-        => Do(() => { foreach (var item in User) { DB.RolesTable.Add(item); DB.SaveChanges(); } });
-
-        public bool Exist(Expression<Func<RolesTable, bool>> F)
-        => DB.RolesTable.Any(F);
-        public RolesTable? First(Expression<Func<RolesTable, bool>> F)
-        => DB.RolesTable.First(F);
-
-        public RolesTable? Find(params object?[]? Key)
-        => DB.RolesTable.Find(Key);
-
-        public IEnumerable<RolesTable> GetAll()
-        => DB.RolesTable.AsEnumerable();
-
-        public bool Remove(RolesTable User)
-        => Do(() =>
-        { User.IsDeleted = true; DB.RolesTable.Update(User); DB.SaveChanges(); });
-
-        public bool Update(RolesTable User)
-        => Do(() => { DB.RolesTable.Update(User); DB.SaveChanges(); });
-
-        bool Do(Action A)
+        catch
         {
-            try
-            {
-                A.Invoke();
-                return true;
-            }
-            catch
-            {
-                return false;
-            }
+            return false;
         }
     }
 }

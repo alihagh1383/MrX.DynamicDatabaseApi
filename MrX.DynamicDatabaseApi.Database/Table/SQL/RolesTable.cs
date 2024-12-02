@@ -2,7 +2,7 @@
 
 public class RolesTable : BaseTable
 {
-    public required string Name { get; set; }  
+    public required string Name { get; set; }
     public required UsersTable Creator { get; set; }
     public List<FieldsTable> FieldsAddRole { get; set; } = [];
     public List<FieldsTable> FieldsDeleteRole { get; set; } = [];
